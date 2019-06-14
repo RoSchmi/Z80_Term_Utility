@@ -1113,7 +1113,7 @@ namespace Z80_Term_Utility
                 {
                     Thread.Sleep(1);
                 }
-                for (int i = 1; i < pFileContentBinary.Length; i++)
+                for (int i = 0; i < pFileContentBinary.Length; i++)
                 {
                     stringBuilder.Clear();
                     stringBuilder.Append(" $");
@@ -1224,9 +1224,9 @@ namespace Z80_Term_Utility
             Thread.Sleep(100);
             int startAddress = int.Parse(pStartAddress, System.Globalization.NumberStyles.HexNumber);
             int endAddress = int.Parse(pEndAddress, System.Globalization.NumberStyles.HexNumber);
-            textBoxFirstCommand.Text = "WD $" + startAddress.ToString("X4") + " $" + fileContentBinary[0].ToString("X2");
+            //textBoxFirstCommand.Text = "WD $" + startAddress.ToString("X4") + " $" + fileContentBinary[0].ToString("X2");
             StringBuilder stringBuilder = new StringBuilder("");
-            for (int i = 0; i < (endAddress - startAddress + 1); i++)
+            for (int i = 0; i < ((endAddress - startAddress) + 2); i++)
             {
                 stringBuilder.Clear();
                 stringBuilder.Append("WF $");
@@ -1236,24 +1236,15 @@ namespace Z80_Term_Utility
                 byte[] arrayToSend = Encoding.UTF8.GetBytes(stringBuilder.ToString());
                 _spManager.WriteDataToSend(arrayToSend);
                 _spManager.DataToSendAvailable = true;
-
-
-                /*
-                if (!WaitAcknowledge.WaitOne(1000))
-                {
-                    int dummy = 1;
-                }
-                */
-                
+                              
                 while (_spManager.DataToSendAvailable == true)
                 {
                     Thread.Sleep(1);
-                }
-                
+                }               
             }
             Thread.Sleep(1);
         }
-
+        /*
         private void buttonDoFirstCommand_Click(object sender, EventArgs e)
         {
             byte[] arrayToSend = Encoding.UTF8.GetBytes(textBoxFirstCommand.Text + "\r");
@@ -1265,7 +1256,7 @@ namespace Z80_Term_Utility
             _spManager.WriteDataToSend(arrayToSend);
             _spManager.DataToSendAvailable = true;
         }
-
+        */
         private void buttonCompareWriteAndRead_Click(object sender, EventArgs e)
         {
             textBoxCompareResult.Text = "";
@@ -1454,6 +1445,8 @@ namespace Z80_Term_Utility
                 textBoxStartAddress.Text = "4700";
             }
         }
+
+        
     }
 }
 

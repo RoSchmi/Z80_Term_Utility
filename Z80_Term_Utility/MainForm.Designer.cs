@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.radioButtonCRLF = new System.Windows.Forms.RadioButton();
             this.radioButtonCR = new System.Windows.Forms.RadioButton();
@@ -42,7 +43,6 @@
             this.textBoxStartAt = new System.Windows.Forms.TextBox();
             this.buttonStartAt = new System.Windows.Forms.Button();
             this.buttonEsc = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -51,12 +51,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttonStartOnDevice = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxCompareResult = new System.Windows.Forms.TextBox();
-            this.buttonDoFirstCommand = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxFirstCommand = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxEndAddressRead = new System.Windows.Forms.TextBox();
             this.buttonCompareWriteAndRead = new System.Windows.Forms.Button();
@@ -107,7 +103,7 @@
             this.timerSaveMessage = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timerRestoreColor = new System.Windows.Forms.Timer(this.components);
-            this.label19 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -133,6 +129,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label19);
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.label18);
@@ -143,7 +140,6 @@
             this.tabPage1.Controls.Add(this.textBoxStartAt);
             this.tabPage1.Controls.Add(this.buttonStartAt);
             this.tabPage1.Controls.Add(this.buttonEsc);
-            this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.label12);
@@ -175,6 +171,15 @@
             this.tabPage1.Text = "Operation";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.SizeChanged += new System.EventHandler(this.tabPage1_SizeChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(427, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(95, 13);
+            this.label19.TabIndex = 33;
+            this.label19.Text = "Term 1 Commands";
             // 
             // groupBox5
             // 
@@ -284,28 +289,19 @@
             this.buttonEsc.UseVisualStyleBackColor = true;
             this.buttonEsc.Click += new System.EventHandler(this.buttonEsc_Click);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(585, 59);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(250, 13);
-            this.label15.TabIndex = 23;
-            this.label15.Text = "Do the \'First Command\' to correct the first byte (bug)";
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(585, 86);
+            this.label14.Location = new System.Drawing.Point(582, 91);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(301, 13);
+            this.label14.Size = new System.Drawing.Size(282, 13);
             this.label14.TabIndex = 22;
-            this.label14.Text = "If compare is \"Euqal\" you can start the Program on the Device";
+            this.label14.Text = "If compare is \"Euqal\" you can start the Program on Term 1";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(585, 73);
+            this.label13.Location = new System.Drawing.Point(582, 78);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(79, 13);
             this.label13.TabIndex = 21;
@@ -314,7 +310,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(582, 46);
+            this.label12.Location = new System.Drawing.Point(582, 62);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(250, 13);
             this.label12.TabIndex = 20;
@@ -325,9 +321,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(582, 33);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(156, 13);
+            this.label11.Size = new System.Drawing.Size(221, 13);
             this.label11.TabIndex = 19;
-            this.label11.Text = "Click \'Deploy to Device\' --> Z80";
+            this.label11.Text = "Click \'Deploy to Device\' (Select target before)";
             // 
             // label10
             // 
@@ -350,12 +346,8 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.buttonStartOnDevice);
-            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.textBoxCompareResult);
-            this.groupBox3.Controls.Add(this.buttonDoFirstCommand);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.textBoxFirstCommand);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.textBoxEndAddressRead);
             this.groupBox3.Controls.Add(this.buttonCompareWriteAndRead);
@@ -380,15 +372,6 @@
             this.buttonStartOnDevice.UseVisualStyleBackColor = false;
             this.buttonStartOnDevice.Click += new System.EventHandler(this.buttonStartOnDevice_Click);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 166);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(306, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "The first value is not transmitted (bug), so do the \'FirstCommand\'";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -404,32 +387,6 @@
             this.textBoxCompareResult.Name = "textBoxCompareResult";
             this.textBoxCompareResult.Size = new System.Drawing.Size(143, 20);
             this.textBoxCompareResult.TabIndex = 11;
-            // 
-            // buttonDoFirstCommand
-            // 
-            this.buttonDoFirstCommand.Location = new System.Drawing.Point(113, 128);
-            this.buttonDoFirstCommand.Name = "buttonDoFirstCommand";
-            this.buttonDoFirstCommand.Size = new System.Drawing.Size(34, 23);
-            this.buttonDoFirstCommand.TabIndex = 10;
-            this.buttonDoFirstCommand.Text = "Do";
-            this.buttonDoFirstCommand.UseVisualStyleBackColor = true;
-            this.buttonDoFirstCommand.Click += new System.EventHandler(this.buttonDoFirstCommand_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 114);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "First Command";
-            // 
-            // textBoxFirstCommand
-            // 
-            this.textBoxFirstCommand.Location = new System.Drawing.Point(7, 130);
-            this.textBoxFirstCommand.Name = "textBoxFirstCommand";
-            this.textBoxFirstCommand.Size = new System.Drawing.Size(100, 20);
-            this.textBoxFirstCommand.TabIndex = 8;
             // 
             // label5
             // 
@@ -466,7 +423,7 @@
             this.buttonReadFromDevice.Name = "buttonReadFromDevice";
             this.buttonReadFromDevice.Size = new System.Drawing.Size(143, 23);
             this.buttonReadFromDevice.TabIndex = 4;
-            this.buttonReadFromDevice.Text = "Read from Device";
+            this.buttonReadFromDevice.Text = "Read back from Term 1";
             this.buttonReadFromDevice.UseVisualStyleBackColor = true;
             this.buttonReadFromDevice.Click += new System.EventHandler(this.buttonReadFromDevice_Click);
             // 
@@ -869,14 +826,14 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // label19
+            // label6
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(427, 30);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(95, 13);
-            this.label19.TabIndex = 33;
-            this.label19.Text = "Term 1 Commands";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(582, 46);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 13);
+            this.label6.TabIndex = 34;
+            this.label6.Text = "Only for Term1:";
             // 
             // MainForm
             // 
@@ -960,14 +917,9 @@
         private System.Windows.Forms.Button buttonReadFromDevice;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxStartAddressRead;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxFirstCommand;
-        private System.Windows.Forms.Button buttonDoFirstCommand;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxCompareResult;
         private System.Windows.Forms.Button buttonStartOnDevice;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -990,6 +942,7 @@
         private System.Windows.Forms.RadioButton radioButtonCRLF;
         private System.Windows.Forms.RadioButton radioButtonCR;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label6;
     }
 }
 
