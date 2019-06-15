@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.radioButtonCRLF = new System.Windows.Forms.RadioButton();
@@ -103,7 +104,8 @@
             this.timerSaveMessage = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timerRestoreColor = new System.Windows.Forms.Timer(this.components);
-            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxFirstCommand = new System.Windows.Forms.TextBox();
+            this.buttonDoFirstCommand = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -171,6 +173,15 @@
             this.tabPage1.Text = "Operation";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.SizeChanged += new System.EventHandler(this.tabPage1_SizeChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(582, 46);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 13);
+            this.label6.TabIndex = 34;
+            this.label6.Text = "Only for Term1:";
             // 
             // label19
             // 
@@ -345,6 +356,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.buttonDoFirstCommand);
+            this.groupBox3.Controls.Add(this.textBoxFirstCommand);
             this.groupBox3.Controls.Add(this.buttonStartOnDevice);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.textBoxCompareResult);
@@ -826,14 +839,24 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // label6
+            // textBoxFirstCommand
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(582, 46);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 13);
-            this.label6.TabIndex = 34;
-            this.label6.Text = "Only for Term1:";
+            this.textBoxFirstCommand.Location = new System.Drawing.Point(7, 131);
+            this.textBoxFirstCommand.Name = "textBoxFirstCommand";
+            this.textBoxFirstCommand.Size = new System.Drawing.Size(100, 20);
+            this.textBoxFirstCommand.TabIndex = 15;
+            this.textBoxFirstCommand.Visible = false;
+            // 
+            // buttonDoFirstCommand
+            // 
+            this.buttonDoFirstCommand.Location = new System.Drawing.Point(116, 131);
+            this.buttonDoFirstCommand.Name = "buttonDoFirstCommand";
+            this.buttonDoFirstCommand.Size = new System.Drawing.Size(34, 23);
+            this.buttonDoFirstCommand.TabIndex = 16;
+            this.buttonDoFirstCommand.Text = "Do";
+            this.buttonDoFirstCommand.UseVisualStyleBackColor = true;
+            this.buttonDoFirstCommand.Visible = false;
+            this.buttonDoFirstCommand.Click += new System.EventHandler(this.buttonDoFirstCommand_Click);
             // 
             // MainForm
             // 
@@ -943,6 +966,8 @@
         private System.Windows.Forms.RadioButton radioButtonCR;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonDoFirstCommand;
+        private System.Windows.Forms.TextBox textBoxFirstCommand;
     }
 }
 
