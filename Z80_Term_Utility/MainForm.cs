@@ -1086,6 +1086,7 @@ namespace Z80_Term_Utility
             StringBuilder stringBuilder = new StringBuilder("");
             if (radioButton_Term_1.Checked)
             {
+                _spManager.SendHardwareFlowControl = false;
                 arrayToSend = new byte[3] { 0x1B, 0x1B, 0x47 };
                 _spManager.WriteDataToSend(arrayToSend);
                 _spManager.DataToSendAvailable = true;
@@ -1140,6 +1141,7 @@ namespace Z80_Term_Utility
 
             if (radioButton_S_EMUF.Checked)
             {
+                _spManager.SendHardwareFlowControl = false;
                 int length = pFileContentBinary.Length - 1;
                 int first = length / 256;
                 int second = length < 65535 ? length % 256 : 256;
@@ -1175,31 +1177,29 @@ namespace Z80_Term_Utility
 
             }
            
-            
-            
-            /*
-
-            arrayToSend = new byte[3] { 0x1B, 0x1B, 0x47 };
-            _spManager.WriteDataToSend(arrayToSend);
-            _spManager.DataToSendAvailable = true;
-            _spManager.DataToSendAvailable = true;
+            if (radioButtonSC_MP.Checked)
             {
-                Thread.Sleep(1);
-            }
-            
-            stringBuilder.Clear();
-            stringBuilder.Append("WD $");
-            stringBuilder.Append(startAddress.ToString("X4"));
-            stringBuilder.Append(" ");
-            stringBuilder.Append(pFileContentBinary[0].ToString("X2"));
-            stringBuilder.Append("\r");
-            arrayToSend = Encoding.UTF8.GetBytes(stringBuilder.ToString());
-            _spManager.WriteDataToSend(arrayToSend);
-            _spManager.DataToSendAvailable = true;
-            {
-                Thread.Sleep(1);
-            }
-            */
+                if (_spManager.SerialBaudRate != 600)
+                {
+                    MessageBox.Show("For SC/MP the Baudrate must be set to 600");
+                }
+                else
+                {
+                    //_spManager.SendHardwareFlowControl = true;
+                    for (int i = 0; i < pFileContentBinary.Length; i++)
+                    {
+                        arrayToSend = new byte[1] { pFileContentBinary[i] };
+                        _spManager.WriteDataToSend(arrayToSend);
+                        _spManager.DataToSendAvailable = true;
+                        while (_spManager.DataToSendAvailable == true)
+                        {
+                            Thread.Sleep(1);
+                        }
+                        Thread.Sleep(1);
+                    }
+                   // _spManager.SendHardwareFlowControl = false;
+                }
+            }           
         }
 
         private void MainForm_Load(object sender, EventArgs e)

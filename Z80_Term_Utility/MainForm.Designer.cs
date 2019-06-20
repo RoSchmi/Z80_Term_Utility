@@ -51,6 +51,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonDoFirstCommand = new System.Windows.Forms.Button();
+            this.textBoxFirstCommand = new System.Windows.Forms.TextBox();
             this.buttonStartOnDevice = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxCompareResult = new System.Windows.Forms.TextBox();
@@ -104,8 +106,6 @@
             this.timerSaveMessage = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timerRestoreColor = new System.Windows.Forms.Timer(this.components);
-            this.textBoxFirstCommand = new System.Windows.Forms.TextBox();
-            this.buttonDoFirstCommand = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -374,6 +374,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Read back from Device, compare and start (Only for Term 1)";
             // 
+            // buttonDoFirstCommand
+            // 
+            this.buttonDoFirstCommand.Location = new System.Drawing.Point(116, 131);
+            this.buttonDoFirstCommand.Name = "buttonDoFirstCommand";
+            this.buttonDoFirstCommand.Size = new System.Drawing.Size(34, 23);
+            this.buttonDoFirstCommand.TabIndex = 16;
+            this.buttonDoFirstCommand.Text = "Do";
+            this.buttonDoFirstCommand.UseVisualStyleBackColor = true;
+            this.buttonDoFirstCommand.Visible = false;
+            this.buttonDoFirstCommand.Click += new System.EventHandler(this.buttonDoFirstCommand_Click);
+            // 
+            // textBoxFirstCommand
+            // 
+            this.textBoxFirstCommand.Location = new System.Drawing.Point(7, 131);
+            this.textBoxFirstCommand.Name = "textBoxFirstCommand";
+            this.textBoxFirstCommand.Size = new System.Drawing.Size(100, 20);
+            this.textBoxFirstCommand.TabIndex = 15;
+            this.textBoxFirstCommand.Visible = false;
+            // 
             // buttonStartOnDevice
             // 
             this.buttonStartOnDevice.BackColor = System.Drawing.Color.OrangeRed;
@@ -507,9 +526,9 @@
             this.groupBox4.Controls.Add(this.radioButtonSC_MP);
             this.groupBox4.Controls.Add(this.radioButton_S_EMUF);
             this.groupBox4.Controls.Add(this.radioButton_Term_1);
-            this.groupBox4.Location = new System.Drawing.Point(134, 64);
+            this.groupBox4.Location = new System.Drawing.Point(116, 64);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(106, 83);
+            this.groupBox4.Size = new System.Drawing.Size(144, 83);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Device Select";
@@ -519,10 +538,10 @@
             this.radioButtonSC_MP.AutoSize = true;
             this.radioButtonSC_MP.Location = new System.Drawing.Point(7, 63);
             this.radioButtonSC_MP.Name = "radioButtonSC_MP";
-            this.radioButtonSC_MP.Size = new System.Drawing.Size(60, 17);
+            this.radioButtonSC_MP.Size = new System.Drawing.Size(115, 17);
             this.radioButtonSC_MP.TabIndex = 2;
             this.radioButtonSC_MP.TabStop = true;
-            this.radioButtonSC_MP.Text = "SC/MP";
+            this.radioButtonSC_MP.Text = "SC/MP (600 Baud)";
             this.radioButtonSC_MP.UseVisualStyleBackColor = true;
             // 
             // radioButton_S_EMUF
@@ -530,10 +549,10 @@
             this.radioButton_S_EMUF.AutoSize = true;
             this.radioButton_S_EMUF.Location = new System.Drawing.Point(6, 39);
             this.radioButton_S_EMUF.Name = "radioButton_S_EMUF";
-            this.radioButton_S_EMUF.Size = new System.Drawing.Size(65, 17);
+            this.radioButton_S_EMUF.Size = new System.Drawing.Size(126, 17);
             this.radioButton_S_EMUF.TabIndex = 1;
             this.radioButton_S_EMUF.TabStop = true;
-            this.radioButton_S_EMUF.Text = "S-EMUF";
+            this.radioButton_S_EMUF.Text = "S-EMUF (9600 Baud)";
             this.radioButton_S_EMUF.UseVisualStyleBackColor = true;
             this.radioButton_S_EMUF.CheckedChanged += new System.EventHandler(this.radioButton_S_EMUF_CheckedChanged);
             // 
@@ -542,16 +561,16 @@
             this.radioButton_Term_1.AutoSize = true;
             this.radioButton_Term_1.Location = new System.Drawing.Point(6, 16);
             this.radioButton_Term_1.Name = "radioButton_Term_1";
-            this.radioButton_Term_1.Size = new System.Drawing.Size(58, 17);
+            this.radioButton_Term_1.Size = new System.Drawing.Size(119, 17);
             this.radioButton_Term_1.TabIndex = 0;
             this.radioButton_Term_1.TabStop = true;
-            this.radioButton_Term_1.Text = "Term 1";
+            this.radioButton_Term_1.Text = "Term 1 (9600 Baud)";
             this.radioButton_Term_1.UseVisualStyleBackColor = true;
             this.radioButton_Term_1.CheckedChanged += new System.EventHandler(this.radioButton_Term_1_CheckedChanged);
             // 
             // buttonWriteToDevice
             // 
-            this.buttonWriteToDevice.Location = new System.Drawing.Point(246, 87);
+            this.buttonWriteToDevice.Location = new System.Drawing.Point(269, 80);
             this.buttonWriteToDevice.Name = "buttonWriteToDevice";
             this.buttonWriteToDevice.Size = new System.Drawing.Size(100, 48);
             this.buttonWriteToDevice.TabIndex = 5;
@@ -838,25 +857,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
-            // textBoxFirstCommand
-            // 
-            this.textBoxFirstCommand.Location = new System.Drawing.Point(7, 131);
-            this.textBoxFirstCommand.Name = "textBoxFirstCommand";
-            this.textBoxFirstCommand.Size = new System.Drawing.Size(100, 20);
-            this.textBoxFirstCommand.TabIndex = 15;
-            this.textBoxFirstCommand.Visible = false;
-            // 
-            // buttonDoFirstCommand
-            // 
-            this.buttonDoFirstCommand.Location = new System.Drawing.Point(116, 131);
-            this.buttonDoFirstCommand.Name = "buttonDoFirstCommand";
-            this.buttonDoFirstCommand.Size = new System.Drawing.Size(34, 23);
-            this.buttonDoFirstCommand.TabIndex = 16;
-            this.buttonDoFirstCommand.Text = "Do";
-            this.buttonDoFirstCommand.UseVisualStyleBackColor = true;
-            this.buttonDoFirstCommand.Visible = false;
-            this.buttonDoFirstCommand.Click += new System.EventHandler(this.buttonDoFirstCommand_Click);
             // 
             // MainForm
             // 

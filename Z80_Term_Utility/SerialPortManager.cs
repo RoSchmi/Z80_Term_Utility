@@ -28,6 +28,13 @@ namespace SerialPortListener.Serial
         private static readonly object LockProgram = new object();
         public bool portCouldBeOpened = false;
 
+        public bool SendHardwareFlowControl = false;
+
+        public int SerialBaudRate
+        {
+            get{ return _serialPort.BaudRate; }
+        }
+
         public SerialPortManager()
         {
             // Finding installed serial ports on hardware
@@ -68,18 +75,29 @@ namespace SerialPortListener.Serial
             {
                 if (DataToSendAvailable)
                 {
+                    if (SendHardwareFlowControl)
+                    {
+                        // doesn't work, so it is outcommented
+
+                        //_serialPort.Handshake = Handshake.RequestToSend;
+                        //_serialPort.DtrEnable = true;
+                        //_serialPort.RtsEnable = true;
+                    }
+                    
+
                     lock (LockProgram)
                     {
                         for (int i = 0; i < DataToSend.Length; i++)
                         {
-                            byte[] theByte = new byte[1] { DataToSend[i] };
-                            _serialPort.Write(theByte, 0, 1);
-
+                            byte[] theByte = new byte[1] { DataToSend[i] };                                                           
+                            _serialPort.Write(theByte, 0, 1);                                                                           
                             Thread.Sleep(1);
-                        }
-
+                        }                                              
                         DataToSendAvailable = false;
-                    }
+                    }                  
+                    _serialPort.Handshake = Handshake.None;
+                    SendHardwareFlowControl = false;
+
                 }
                 Thread.Sleep(50);
             }
