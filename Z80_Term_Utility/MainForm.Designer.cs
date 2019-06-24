@@ -106,6 +106,11 @@
             this.timerSaveMessage = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timerRestoreColor = new System.Windows.Forms.Timer(this.components);
+            this.textBoxSelectWriteFile = new System.Windows.Forms.TextBox();
+            this.buttonSelectWriteFile = new System.Windows.Forms.Button();
+            this.buttonWriteToFile = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.buttonClearWrite = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -131,6 +136,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonClearWrite);
+            this.tabPage1.Controls.Add(this.buttonWriteToFile);
+            this.tabPage1.Controls.Add(this.buttonSelectWriteFile);
+            this.tabPage1.Controls.Add(this.textBoxSelectWriteFile);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label19);
             this.tabPage1.Controls.Add(this.groupBox5);
@@ -255,7 +264,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(60, 195);
+            this.label16.Location = new System.Drawing.Point(60, 215);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(106, 13);
             this.label16.TabIndex = 28;
@@ -263,7 +272,7 @@
             // 
             // tbData3
             // 
-            this.tbData3.Location = new System.Drawing.Point(63, 211);
+            this.tbData3.Location = new System.Drawing.Point(63, 234);
             this.tbData3.Multiline = true;
             this.tbData3.Name = "tbData3";
             this.tbData3.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -483,18 +492,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(241, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 13);
+            this.label3.Size = new System.Drawing.Size(152, 13);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Write to Device (hex)";
+            this.label3.Text = "Window: Write to Device (hex)";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 30);
+            this.label2.Location = new System.Drawing.Point(60, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 13);
+            this.label2.Size = new System.Drawing.Size(164, 13);
             this.label2.TabIndex = 14;
-            this.label2.Text = "Read from Device (hex)";
+            this.label2.Text = "Window: Read from Device (hex)";
             // 
             // tbData2
             // 
@@ -502,7 +511,7 @@
             this.tbData2.Multiline = true;
             this.tbData2.Name = "tbData2";
             this.tbData2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbData2.Size = new System.Drawing.Size(165, 136);
+            this.tbData2.Size = new System.Drawing.Size(165, 123);
             this.tbData2.TabIndex = 13;
             // 
             // groupBoxWriteToDevice
@@ -543,6 +552,7 @@
             this.radioButtonSC_MP.TabStop = true;
             this.radioButtonSC_MP.Text = "SC/MP (600 Baud)";
             this.radioButtonSC_MP.UseVisualStyleBackColor = true;
+            this.radioButtonSC_MP.CheckedChanged += new System.EventHandler(this.radioButtonSC_MP_CheckedChanged);
             // 
             // radioButton_S_EMUF
             // 
@@ -715,7 +725,7 @@
             this.tbData1.Multiline = true;
             this.tbData1.Name = "tbData1";
             this.tbData1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbData1.Size = new System.Drawing.Size(165, 136);
+            this.tbData1.Size = new System.Drawing.Size(165, 123);
             this.tbData1.TabIndex = 2;
             // 
             // btnStart
@@ -858,6 +868,47 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // textBoxSelectWriteFile
+            // 
+            this.textBoxSelectWriteFile.Location = new System.Drawing.Point(63, 181);
+            this.textBoxSelectWriteFile.Name = "textBoxSelectWriteFile";
+            this.textBoxSelectWriteFile.Size = new System.Drawing.Size(152, 20);
+            this.textBoxSelectWriteFile.TabIndex = 35;
+            // 
+            // buttonSelectWriteFile
+            // 
+            this.buttonSelectWriteFile.Location = new System.Drawing.Point(221, 178);
+            this.buttonSelectWriteFile.Name = "buttonSelectWriteFile";
+            this.buttonSelectWriteFile.Size = new System.Drawing.Size(113, 23);
+            this.buttonSelectWriteFile.TabIndex = 36;
+            this.buttonSelectWriteFile.Text = "Select File to write";
+            this.buttonSelectWriteFile.UseVisualStyleBackColor = true;
+            this.buttonSelectWriteFile.Click += new System.EventHandler(this.buttonSelectWriteFile_Click);
+            // 
+            // buttonWriteToFile
+            // 
+            this.buttonWriteToFile.Location = new System.Drawing.Point(221, 203);
+            this.buttonWriteToFile.Name = "buttonWriteToFile";
+            this.buttonWriteToFile.Size = new System.Drawing.Size(113, 23);
+            this.buttonWriteToFile.TabIndex = 37;
+            this.buttonWriteToFile.Text = "Write to File";
+            this.buttonWriteToFile.UseVisualStyleBackColor = true;
+            this.buttonWriteToFile.Click += new System.EventHandler(this.buttonWriteToFile_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+            // buttonClearWrite
+            // 
+            this.buttonClearWrite.Location = new System.Drawing.Point(63, 23);
+            this.buttonClearWrite.Name = "buttonClearWrite";
+            this.buttonClearWrite.Size = new System.Drawing.Size(75, 23);
+            this.buttonClearWrite.TabIndex = 38;
+            this.buttonClearWrite.Text = "Clear";
+            this.buttonClearWrite.UseVisualStyleBackColor = true;
+            this.buttonClearWrite.Click += new System.EventHandler(this.buttonClearWrite_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -968,6 +1019,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonDoFirstCommand;
         private System.Windows.Forms.TextBox textBoxFirstCommand;
+        private System.Windows.Forms.Button buttonWriteToFile;
+        private System.Windows.Forms.Button buttonSelectWriteFile;
+        private System.Windows.Forms.TextBox textBoxSelectWriteFile;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button buttonClearWrite;
     }
 }
 

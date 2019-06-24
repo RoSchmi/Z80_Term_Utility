@@ -42,6 +42,8 @@ namespace Z80_Term_Utility
 
         string SelectedFile = "";
 
+        string SelectedWriteFile = "";
+
         string StartAddress = "4700";
 
         byte[] fileContentBinary;
@@ -581,10 +583,10 @@ namespace Z80_Term_Utility
             }
 
 
-            int maxTextLength = 1000; // maximum text length in text box
+            int maxTextLength = 50000; // maximum text length in text box
             if (tbData1.TextLength > maxTextLength)
                 tbData1.Text = tbData1.Text.Remove(0, tbData1.TextLength - maxTextLength);
-            maxTextLength = 500;
+            //maxTextLength = 500;
             if (tbData3.TextLength > maxTextLength)
                 tbData3.Text = tbData3.Text.Remove(0, tbData3.TextLength - maxTextLength);
 
@@ -1466,6 +1468,16 @@ namespace Z80_Term_Utility
             }
         }
 
+        private void radioButtonSC_MP_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonSC_MP.Checked)
+            {
+                textBoxStartAddress.Text = "2000";
+            }
+        }
+
+       
+
         private void buttonDoFirstCommand_Click(object sender, EventArgs e)
         {
             byte[] arrayToSend = Encoding.UTF8.GetBytes(textBoxFirstCommand.Text + "\r");
@@ -1479,9 +1491,43 @@ namespace Z80_Term_Utility
 
             _spManager.DataToSendAvailable = true;
         }
+
+        private void buttonSelectWriteFile_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.InitialDirectory = null;
+            saveFileDialog1.FileName = textBoxSelectWriteFile.Text;
+            saveFileDialog1.ShowDialog();
+            
+        }
+
+        private void buttonWriteToFile_Click(object sender, EventArgs e)
+        {
+            if (SelectedWriteFile != "")
+            {
+                byte[] WriteBytes = ReceivedBytes.ToArray<byte>();
+
+                File.WriteAllBytes(SelectedWriteFile, WriteBytes);           
+            }
+            else
+            {
+                MessageBox.Show("No Filename selected");
+            }
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxSelectWriteFile.Text = Path.GetFileName(saveFileDialog1.FileName);
+            SelectedWriteFile = saveFileDialog1.FileName;
+        }
+
+        private void buttonClearWrite_Click(object sender, EventArgs e)
+        {
+            ReceivedBytes = new List<byte>();
+            tbData1.Text = "";
+        }
     }
 }
-
+   
 
 
         /*
